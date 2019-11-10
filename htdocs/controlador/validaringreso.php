@@ -28,9 +28,18 @@
             $email = $_POST['invitado_email'];
             $sql= "SELECT * from Invitados where Email = '$email'";
             $query = mysqli_query($con,$sql);
+            $row = mysqli_fetch_array($query);
             if(mysqli_num_rows($query)!=0)
             {
-                echo "El email ya existe como invitado";
+               if($row['Cedula'] == $cedula){
+                    $_SESSION['Cedula'] = $_POST['cedula'];
+                    $_SESSION['Email'] = $_POST['invitado_email'];
+                    $_SESSION['Rol'] = 'Invitado';
+                    header('Location: ../vista/invitado.php');
+                    
+               }else{
+                    header("Location: ../index.php");
+               }
             }
             else{
                     $sql3 = "INSERT INTO Invitados (Email,Cedula)
@@ -40,8 +49,9 @@
                         echo "no entró";
                         die('No es posible registrar el usuario'.mysqli_error($con));
                     }else{
-                        $_SESSION['cedula'] = $_POST['cedula'];
-                        $_SESSION['email'] = $_POST['invitado_email'];
+                        $_SESSION['Cedula'] = $_POST['cedula'];
+                        $_SESSION['Email'] = $_POST['invitado_email'];
+                        $_SESSION['Rol'] = 'Invitado';
                        header('Location: ../vista/invitado.php');
                     }
                 }
