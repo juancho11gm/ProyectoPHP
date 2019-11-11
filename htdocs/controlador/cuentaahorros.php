@@ -9,6 +9,5 @@
         $new_array[]=$row; // Inside while loop
     }
     $_SESSION['CuentasAhorros'] = $new_array;
-    
 ?>
   

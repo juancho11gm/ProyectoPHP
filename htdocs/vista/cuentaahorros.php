@@ -2,6 +2,12 @@
   include_once '../controlador/cuentaahorros.php';
   $Usuario = ($_SESSION['Usuario']);
   $_SESSION['CuentasAhorros'];
+  $respuesta='';
+  if(isset($_SESSION['respuesta'])) {
+    $respuesta .= '<script> alert("' .$_SESSION['respuesta']. '")</script>';
+    echo $respuesta;
+    unset($_SESSION['respuesta']);
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,6 +20,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>Cuenta de ahorros</title>
+
+    <style>
+        .botones{
+            display: flex;
+            justify-content:center;
+        }
+        
+    </style>
   </head>
   <body>
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
@@ -33,6 +47,9 @@
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Saldo</th>
+            <th scope="col">Retirar</th>
+            <th scope="col">Consignar</th>
+
           </tr>
         </thead>
         <tbody>
@@ -41,22 +58,19 @@
                 foreach ( $_SESSION['CuentasAhorros'] as $key) {
                     echo '<tr>';
                       echo '<th >'.$key['Id']."</th>";
-                      echo "<td> $ ".$key['Saldo']." javecoins </td>";
-                    echo '</tr>';
+                      echo "<td> $ ".$key['Saldo']." javecoins </td> ";
+                      echo " <td> <a class=option-btn btn btn-warning href=./retirar.php?IdCuenta=".$key['Id']." >Retirar </a></td>";
+                      echo " <td> <a class=option-btn btn btn-warning href=./consignar.php?IdCuenta=".$key['Id']." >Consignar </a></td>";
+                      echo '</tr>';
                   }
             }
             
           ?>
         </tbody>
       </table>
-        <div class="row">
+        <div class="botones">
 
-            <a class="option-btn btn btn-warning" href="./.php">Retiros</a>
-
-
-            <a class="option-btn btn btn-primary" href="./consign.php">Consignar</a>
-
-        <a class="option-btn btn btn-success" href="./createSavingsAccount.php">Crear Cuenta Ahorros</a>
+            <a class="option-btn btn btn-success" href="./crearCuentaAhorros.php">Crear cuenta de ahorros</a>
       </div>
     </div>
 
