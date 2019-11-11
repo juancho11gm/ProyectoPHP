@@ -47,7 +47,7 @@
         <div >
           <div >
             <label >Saldo Actual</label>
-            <label ><?php echo $row['Saldo']; ?></label><br>
+            <label ><?php echo number_format($row['Saldo'],2); ?></label><br>
             <label >Saldo a retirar</label>
             <input type="number" name="saldoRetirar" class="form-control"  placeholder="Saldo" required><br>
             <button type="submit" class="submit-btn btn btn-success">Retirar</button>

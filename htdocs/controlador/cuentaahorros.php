@@ -9,5 +9,14 @@
         $new_array[]=$row; // Inside while loop
     }
     $_SESSION['CuentasAhorros'] = $new_array;
+
+
+    $sql = "SELECT * FROM CuentasAhorros;";
+    $arreglo = mysqli_query($con,$sql);
+    $new_array = array();
+    while( $row = mysqli_fetch_array( $arreglo)){
+        $new_array[]=$row; // Inside while loop
+    }
+    $_SESSION['TodasCuentasAhorros'] = $new_array;
 ?>
   

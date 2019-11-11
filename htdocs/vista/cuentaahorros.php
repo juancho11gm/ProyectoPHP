@@ -2,6 +2,8 @@
   include_once '../controlador/cuentaahorros.php';
   $Usuario = ($_SESSION['Usuario']);
   $_SESSION['CuentasAhorros'];
+  $_SESSION['TodasCuentasAhorros'];
+
   $respuesta='';
   if(isset($_SESSION['respuesta'])) {
     $respuesta .= '<script> alert("' .$_SESSION['respuesta']. '")</script>';
@@ -26,6 +28,10 @@
             display: flex;
             justify-content:center;
         }
+        .cuentas, .consignar{
+            display: flex;
+            justify-content:center;
+        }
         
     </style>
   </head>
@@ -41,14 +47,13 @@
       </nav>
       <a class="btn btn-outline-danger" href="../controlador/salir.php">Salir</a>
     </div>
-
+    <div class="cuentas">
       <table class="table">
         <thead>
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Saldo</th>
             <th scope="col">Retirar</th>
-            <th scope="col">Consignar</th>
 
           </tr>
         </thead>
@@ -58,9 +63,8 @@
                 foreach ( $_SESSION['CuentasAhorros'] as $key) {
                     echo '<tr>';
                       echo '<th >'.$key['Id']."</th>";
-                      echo "<td> $ ".$key['Saldo']." javecoins </td> ";
+                      echo "<td> $ ".number_format($key['Saldo'],2)." JaveCoins </td> ";
                       echo " <td> <a class=option-btn btn btn-warning href=./retirar.php?IdCuenta=".$key['Id']." >Retirar </a></td>";
-                      echo " <td> <a class=option-btn btn btn-warning href=./consignar.php?IdCuenta=".$key['Id']." >Consignar </a></td>";
                       echo '</tr>';
                   }
             }
@@ -68,11 +72,43 @@
           ?>
         </tbody>
       </table>
+    </div>
         <div class="botones">
 
             <a class="option-btn btn btn-success" href="./crearCuentaAhorros.php">Crear cuenta de ahorros</a>
+            <a class="option-btn btn btn-primary" href="./consignar.php">Consignar</a>
+
       </div>
     </div>
+
+    <div class="consignar">
+        <div>
+          <h2>Consignar de una cuenta de ahorros a otra</h2>
+          <form class="container form-signin" action="../controlador/consignar.php" method="post">
+            <label >Cuenta de Ahorros Origen</label>
+            <select name="origen" class="form-control" id="origin" required>
+              <?php
+                foreach ( $_SESSION['CuentasAhorros'] as $key ) {
+                  echo '<option>'.$key['Id'].'</option>';
+                }
+              ?>
+              <option>Sin cuenta</option>
+            </select>
+            <label for="amount">Monto a Consignar</label>
+            <input type="number" name="monto" id="amount" placeholder="Monto" class="form-control" required>
+            <label >Cuenta de Destino</label>
+            <select name="destino" class="form-control" id="origin" required>
+              <?php
+                foreach ($_SESSION['TodasCuentasAhorros'] as $key ) {
+                  echo '<option>'. $key['Id'] .'</option>';
+                }
+              ?>
+            </select><br>
+            <div class="botones">
+              <button type="submit" class="submit-btn btn btn-info">Consignar</button>
+            </div>
+          </form>
+        </div>
 
   </body>
 </html>
