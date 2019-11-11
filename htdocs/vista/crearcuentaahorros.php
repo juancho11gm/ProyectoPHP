@@ -15,7 +15,7 @@
   <body>
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
       <nav class="my-2 my-md-0 mr-md-3">
-          <a class="p-2 text-dark" href="./perfil.php"><?php echo $Usuario; ?></a>
+          <a class="p-2 text-dark" ><?php echo $Usuario; ?></a>
           <a class="p-2 text-dark" href="./cuentaahorros.php">Cuenta de ahorros</a>
           <a class="p-2 text-dark" href="./creditos.php">Créditos</a>
           <a class="p-2 text-dark" href="./tarjetacredito.php">Tarjetas de crédito</a>

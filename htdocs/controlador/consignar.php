@@ -4,8 +4,15 @@
   $con = mysqli_connect(HOST_DB,USUARIO_DB,USUARIO_PASS,NOMBRE_DB);
   $origen=$_POST['origen'];
   $destino=$_POST['destino'];
-  $monto=$_POST['monto'];
+  $_POST['monto'];
   echo $origen." ".$destino;
+
+  if($_POST['tipomoneda']=='0'){
+     $monto = $_POST['monto']/1000;
+  }else{
+    $monto = $_POST['monto'];
+  }
+
   if($origen=='Sin cuenta'){
 
     $sql = "SELECT * FROM CuentasAhorros WHERE Id ='$destino';";

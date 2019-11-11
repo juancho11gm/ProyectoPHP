@@ -18,6 +18,22 @@
         <input name="username" type="text" class="form-control" placeholder="Usuario" required>
         <label for="inputPassword" class="sr-only">Contraseña</label>
         <input name="password" type="password" class="form-control middle-input" placeholder="Contraseña"  required>
+        <div class="col-6">
+              <div class="form-check text-center">
+                <input class="form-check-input" type="radio" name="tipousuario" value="0"checked>
+                <label class="form-check-label">
+                  Usuario
+                </label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-check text-center">
+                <input class="form-check-input" type="radio" name="tipousuario"  value="1" >
+                <label class="form-check-label" >
+                  Administrador
+                </label>
+              </div>
+            </div>
         <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarme</button>
       </form>

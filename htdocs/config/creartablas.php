@@ -20,6 +20,12 @@
         echo "Error" . mysqli_error($con);
     }
     
+    $sql = "CREATE TABLE Tarjetas (Id INT(11) NOT NULL AUTO_INCREMENT,Monto decimal(40,10) NOT NULL,CupoMaximo decimal(40,10),Sobrecupo decimal(40,10),TasaInteres decimal(40,10),CuotaManejo decimal(40,10),Aprobada VARCHAR(30), ClienteId INT(11),PRIMARY KEY (Id),FOREIGN KEY (ClienteId) REFERENCES Clientes(Id) ON DELETE CASCADE);";
+    if (mysqli_query($con, $sql)) {
+        echo "Tabla Tarjetas creada";
+    } else {
+        echo "Error" . mysqli_error($con);
+    }
    
 
 ?>

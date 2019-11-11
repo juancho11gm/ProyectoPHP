@@ -16,7 +16,11 @@
             $_SESSION['Usuario'] = $row['Usuario'];
             $_SESSION['Rol'] = $row['Rol'];
             echo "bien";
-            header('Location: ../vista/perfil.php');
+            if( $_SESSION['Rol']=='Administrador'){
+                header('Location: ../vista/tarjetacreditoadmin.php');
+            }else{
+                header('Location: ../vista/cuentaahorros.php');
+            }
 
         }
         else {

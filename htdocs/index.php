@@ -1,3 +1,11 @@
+<?php
+  $respuesta='';
+  if(isset($_SESSION['respuesta'])) {
+    $respuesta .= '<script> alert("' .$_SESSION['respuesta']. '")</script>';
+    echo $respuesta;
+    unset($_SESSION['respuesta']);
+  }
+?>
 <!doctype html>
 <html>
     <head>
@@ -12,6 +20,9 @@
         .ingreso{
             display: flex;
             justify-content:center;
+        }
+        input{
+            margin:3px;
         }
         </style>
     </head>
@@ -29,7 +40,7 @@
             </div>
             <div class="container form-signin">
                 <form class="form" method="post" action="./controlador/validaringreso.php">
-                    <h1>Acceder Como Invitado</h1>
+                    <h1>Acceder como invitado</h1>
                     <div class="form-group">
                         <input type="number" id="inputPassword" name="cedula" class="form-control" placeholder="Cédula" required>
                         <input type="email" id="inputEmail" name="invitado_email" class="form-control" placeholder="Email" required>
