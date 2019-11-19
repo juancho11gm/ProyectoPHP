@@ -18,3 +18,4 @@
      header('Location: ../vista/administrador.php');
 
 ?>
+

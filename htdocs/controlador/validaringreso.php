@@ -24,7 +24,7 @@
 
         }
         else {
-            header("Location: ../index.php");
+            header('Location: ../vista/index.php');
             //echo "Ingrese los datos nuevamenteeee";
         }
     }elseif(isset($_POST['invitado'])){

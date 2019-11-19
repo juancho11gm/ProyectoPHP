@@ -86,8 +86,8 @@
                     <td><?php echo $u[1]?></td>
                     <td><?php echo $u[3]?></td>
                     <td>
-                        <a href="" class="btn btn-outline-success">Editar</a>
-                        <a href="../controlador/eliminarUsuario.php?id=<?php echo $r[0]?>" class="btn btn-outline-danger">Eliminar</a>
+                        <a href="./actualizarUsuario.php?Id=<?php echo $u[0]?>" class="btn btn-outline-success">Editar</a>
+                        <a href="../controlador/eliminarUsuario.php?id=<?php echo $u[0]?>" class="btn btn-outline-danger">Eliminar</a>
                     </td>
                 </tr>
                 <?php endforeach?>
@@ -103,7 +103,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Usuario</th>
+                    <th>Saldo</th>
                     <th>ID Usuario</th>
                     <th></th>
                 </tr>
@@ -132,7 +132,6 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Monto</th>
                     <th>Cupo Máximo</th>
                     <th>Sobrecupo</th>
                     <th>Tasa Interes</th>
@@ -152,12 +151,11 @@
                     <td><?php echo $t[4]?></td>
                     <td><?php echo $t[5]?></td>
                     <td><?php echo $t[6]?></td>
-                    <td><?php echo $t[7]?></td>
                     <td>
                         <?php if($t[6] == 'N'):?>
-                        <a href="../controlador/aprobartarjeta.php?IdTarjeta=<?php echo $t[0]?>" class="btn btn-link">Aprobar</a>
+                        <a href="../controlador/aprobarTarjeta.php?IdTarjeta=<?php echo $t[0]?>" class="btn btn-link">Aprobar</a>
                         <?php endif?>
-                        <a href="" class="btn btn-outline-success">Editar</a>
+                        <a href="./actualizarTarjeta.php?Id=<?php echo $t[0]?>" class="btn btn-outline-success">Editar</a>
                         <a href="../controlador/eliminarTarjeta.php?id=<?php echo $t[0]?>" class="btn btn-outline-danger">Eliminar</a>
                     </td>
                 </tr>

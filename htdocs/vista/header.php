@@ -13,11 +13,7 @@
                 <a class="p-2 text-dark" href="./cuentaahorros.php">Cuenta de ahorros</a>
             </li>
             <li class="nav-item">
-                <?php if($_SESSION['Rol']!='Administrador'):?>
-                    <a class="p-2 text-dark" href="./tarjetacredito.php">Tarjetas de crédito</a>
-                <?php else:?>
-                    <a class="p-2 text-dark" href="./tarjetacreditoadmin.php">Tarjetas de crédito</a>
-                <?php endif?>
+                <a class="p-2 text-dark" href="./tarjetacredito.php">Tarjetas de crédito</a>
             </li >
             <li>
                 <a class="p-2 text-dark" href="./creditos.php">Créditos</a>

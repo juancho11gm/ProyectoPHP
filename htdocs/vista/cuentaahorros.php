@@ -29,7 +29,7 @@
   <?php include('header.php')?>
 
 
-    <h1 class="title">Tus cuentas de ahorros</h1>
+    <h1 class="title">Cuentas de ahorros</h1>
     <div class="container form-signin">
       <div class="cuentas ">
         <table class="table">

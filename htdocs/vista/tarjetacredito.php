@@ -2,8 +2,33 @@
 <?php
   session_start();
   include_once '../controlador/tarjetacredito.php';
-  $credit_cards = $_SESSION['TarjetasCredito'];
-  $Usuario = ($_SESSION['Usuario']);
+  include_once('../config/config.php');
+  $con = mysqli_connect(HOST_DB,USUARIO_DB,USUARIO_PASS,NOMBRE_DB);
+  $compras = array();
+  if(isset($_SESSION['Usuario'])){
+      $Usuario = $_SESSION['Usuario'];
+      if($_SESSION['Rol']=="Usuario"){
+          $id = $_SESSION['Id'];
+          $sql = "SELECT * FROM Tarjetas WHERE ClienteId ='$id'";
+
+          $sql2 = "SELECT Compras.Id, Compras.Valor, Compras.Cuotas, Tarjetas.Id FROM Tarjetas INNER JOIN Compras ON Tarjetas.Id = Compras.TarjetaId INNER JOIN Clientes ON Tarjetas.ClienteId = Clientes.Id";
+         
+          $arreglo = mysqli_query($con,$sql2);
+          while( $row = mysqli_fetch_array( $arreglo)){
+              $compras[]=$row; // Inside while loop
+              echo "hola";
+          }
+      }
+      if($_SESSION['Rol']=="Administrador"){
+          $sql = "SELECT * FROM Tarjetas";
+      }
+  }
+
+  $query = mysqli_query($con,$sql);
+  $tarjetas = mysqli_fetch_all($query);
+
+ 
+
   $respuesta='';
   if(isset($_SESSION['respuesta'])) {
     $respuesta .= '<script> alert("' .$_SESSION['respuesta']. '")</script>';
@@ -30,7 +55,7 @@
     <?php include('header.php')?>
 
 
-    <h1 class="title">Tus Tarjetas de Credito</h1>
+    <h1 class="title">Tarjetas de Crédito</h1>
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
           
       <div class="container form-signin">
@@ -38,30 +63,39 @@
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Monto</th>
               <th scope="col">Cupo máximo</th>
               <th scope="col">Sobrecupo</th>
-              <th scope="col">Cuota de manejo</th>
               <th scope="col">Tasa de Interés</th>
+              <th scope="col">Cuota de manejo</th>
               <th scope="col">Aprobada</th>
             </tr>
           </thead>
           <tbody>
-            <?php
-              foreach ($credit_cards as $key) {
-                  echo '<tr>';
-                    echo '<th>'.$key['Id']."</th>";
-                    echo "<td> $ ".number_format($key['Monto'],2)." JaveCoins </td>";
-                    echo "<td>".number_format($key['CupoMaximo'],2)."</td>";
-                    echo "<td>".number_format($key['Sobrecupo'],2)."</td>";
-                    echo "<td>".number_format($key['TasaInteres'],2)."</td>";
-                    echo "<td>".number_format($key['CuotaManejo'],2)."</td>";
-                    echo '<th>'.$key['Aprobada']."</th>";
-                  echo '</tr>';
-              }
-            ?>
+          <?php foreach($tarjetas as $t):?>
+                <tr>
+                    <td><?php echo number_format($t[0],0)?></td>
+                    <td><?php echo number_format($t[1],2)?></td>
+                    <td><?php echo number_format($t[2],2)?></td>
+                    <td><?php echo number_format($t[3],2)?></td>
+                    <td><?php echo number_format($t[4],2)?></td>
+                    <td><?php echo $t[5]?></td>
+                    <td>
+
+                    <?php if($_SESSION['Rol']=='Administrador'):?>
+                            <?php if($t[5] == 'N'):?>
+                              <a href="../controlador/aprobartarjeta.php?IdTarjeta=<?php echo $t[0]?>" class="btn btn-link">Aprobar</a>
+                            <?php endif?>
+                            <a href="actualizarTarjeta.php?Id=<?php echo $t[0]?>" class="btn btn-outline-success">Editar</a>
+                    <?php endif?>
+
+                              <a href="../controlador/eliminarTarjeta.php?Id=<?php echo $t[0]?>" class="btn btn-outline-danger">Eliminar</a>
+                            </td>
+
+                </tr>
+                <?php endforeach?>
           </tbody>
         </table>
+        <?php if($_SESSION['Rol']!='Administrador'):?>
         <div class="container">
             <div class="row">
               <div class="col-6">
@@ -72,9 +106,40 @@
               </div>
             </div>
           </div>
+        <?php endif?>
         </div>
       </div>
     </div>
+
+
+    <h1 class="title">Compras</h1>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+          
+      <div class="container form-signin">
+        <table class="table">
+          <thead>
+            <tr>
+            <th scope="col">Id compra</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Cuotas</th>
+              <th scope="col">Id tarjeta</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php foreach($compras as $c):?>
+
+            <tr>
+                    <td><?php echo $c[0]?></td>
+                    <td><?php echo $c[1]?></td>
+                    <td><?php echo $c[2]?></td>
+                    <td><?php echo $c[3]?></td>
+
+            </tr>
+          <?php endforeach?>
+          </tbody>
+        </table>
+      </div>
+    </div>    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

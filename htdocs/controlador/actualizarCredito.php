@@ -13,11 +13,11 @@
         $sql = "UPDATE Creditos SET TasaInteres = '$tasa', CuotaManejo = '$cuotas', Monto = '$monto', Aprobada ='$aprobado', FechaPago = '$fecha' WHERE Id = '$id';";
         
         if(!mysqli_query($con,$sql)){
-            die('No es posible registrar el credit'.mysqli_error($con));
-            $_SESSION['respuesta'] = 'No se ha podido crear la cuenta';
+            die('No es posible actualizar el crédito'.mysqli_error($con));
+            $_SESSION['respuesta'] = 'No se ha podido actualizar el crédito';
             
         }else{
-            $_SESSION['respuesta'] = 'Se ha creado la cuenta exitosamente exitosamente';     
+            $_SESSION['respuesta'] = 'Se ha actualizado el crédito exitosamente';     
             header('Location: ../vista/creditos.php');
         }
 
