@@ -16,7 +16,6 @@
           $arreglo = mysqli_query($con,$sql2);
           while( $row = mysqli_fetch_array( $arreglo)){
               $compras[]=$row; // Inside while loop
-              echo "hola";
           }
       }
       if($_SESSION['Rol']=="Administrador"){
