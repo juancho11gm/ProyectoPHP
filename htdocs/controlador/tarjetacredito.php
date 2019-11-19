@@ -18,4 +18,3 @@
     }
     $_SESSION['TodasTarjetasCredito'] = $new_array;
 ?>
-  

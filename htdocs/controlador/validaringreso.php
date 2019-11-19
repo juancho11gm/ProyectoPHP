@@ -17,9 +17,9 @@
             $_SESSION['Rol'] = $row['Rol'];
             echo "bien";
             if( $_SESSION['Rol']=='Administrador'){
-                header('Location: ../vista/tarjetacreditoadmin.php');
+                header('Location: ../vista/index.php');
             }else{
-                header('Location: ../vista/cuentaahorros.php');
+                header('Location: ../vista/index.php');
             }
 
         }
@@ -39,10 +39,10 @@
                     $_SESSION['Cedula'] = $_POST['cedula'];
                     $_SESSION['Email'] = $_POST['invitado_email'];
                     $_SESSION['Rol'] = 'Invitado';
-                    header('Location: ../vista/invitado.php');
+                    header('Location: ../vista/index.php');
                     
                }else{
-                    header("Location: ../index.php");
+                    header("Location: ../vista/index.php");
                }
             }
             else{
@@ -56,7 +56,7 @@
                         $_SESSION['Cedula'] = $_POST['cedula'];
                         $_SESSION['Email'] = $_POST['invitado_email'];
                         $_SESSION['Rol'] = 'Invitado';
-                       header('Location: ../vista/invitado.php');
+                       header('Location: ../vista/index.php');
                     }
                 }
     }

@@ -26,6 +26,19 @@
     } else {
         echo "Error" . mysqli_error($con);
     }
-   
+
+    $sql = "CREATE TABLE Creditos (Id INT(11) NOT NULL AUTO_INCREMENT,Monto decimal(40,10) NOT NULL,TasaInteres decimal(40,10),CuotaManejo decimal(40,10),Aprobada VARCHAR(30), ClienteId INT(11),FechaPago DATE, Invitado VARCHAR(30), PRIMARY KEY (Id),FOREIGN KEY (ClienteId) REFERENCES Clientes(Id) ON DELETE CASCADE);";
+    if (mysqli_query($con, $sql)) {
+        echo "Tabla Créditos creada";
+    } else {
+        echo "Error" . mysqli_error($con);
+    }
+
+    $sql = "CREATE TABLE DatosBasicos (Id INT(11) NOT NULL AUTO_INCREMENT,Monto decimal(40,10) NOT NULL,TasaInteres decimal(40,10),CuotaManejo decimal(40,10),PRIMARY KEY (Id));";
+    if (mysqli_query($con, $sql)) {
+        echo "Tabla DatosBasicos creada";
+    } else {
+        echo "Error" . mysqli_error($con);
+    }
 
 ?>

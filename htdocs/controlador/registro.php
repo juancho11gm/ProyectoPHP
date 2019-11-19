@@ -25,7 +25,7 @@
                 die('No es posible registrar el usuario'.mysqli_error($con));
             }else{
                 $_SESSION['respuesta']='Registrado exitosamente';
-                header('Location: ../index.php');
+                header('Location: ../vista/index.php');
             }
         }
 

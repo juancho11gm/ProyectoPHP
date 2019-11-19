@@ -1,0 +1,40 @@
+body{
+    background-color: rgba(236, 236, 236, 0.274);
+}
+
+.shadow{
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.247);
+    
+}
+
+.ingreso{
+    display: flex;
+    justify-content:space-evenly;
+}
+input{
+    margin:3px;
+}
+
+.form-signin{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 5px 4px rgba(0, 0, 0, 0.199);
+    padding: 20px;
+    margin: 10px;
+    width: 40%;
+}
+
+.botones{
+    display: flex;
+    justify-content:center;
+}
+.cuentas, .consignar{
+    display: flex;
+    justify-content:center;
+    
+}
+
+.title{
+    text-align: center;
+    font-weight: bold;
+}
