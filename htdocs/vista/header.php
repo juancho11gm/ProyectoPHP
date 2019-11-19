@@ -21,6 +21,15 @@
             <li>
                 <a class="p-2 text-dark" href="./mensajes.php">Mensajes</a>
             </li>
+
+            <?php if($_SESSION['Rol']=='Usuario'):?>
+
+            <li>
+                <a class="p-2 text-dark" href="./mismovimientos.php">Mis movimientos</a>
+            </li>
+
+            <?php endif?>
+
             <!--MENU INVITADO-->
             <?php else:?>
             <li class="nav-item">

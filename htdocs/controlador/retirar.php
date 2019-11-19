@@ -11,11 +11,17 @@
         $x = $row['Saldo'] - $saldoRetirar;
         $sql = "UPDATE CuentasAhorros SET Saldo = '$x' WHERE Id=".$Id.";";
         if (mysqli_query($con, $sql)) {
-            $_SESSION['respuesta'] = 'Se ha retirado exitosamente';     
+            $_SESSION['respuesta'] = 'Se ha retirado exitosamente'; 
+            
+            $sql = "INSERT INTO Movimientos (Valor, Origen,Destino,Tipo ) VALUES ('$saldoRetirar',0,'$Id','Retiro');";
+            mysqli_query($con, $sql);
+            
+
+        }else {
+            $_SESSION['respuesta'] = 'No se ha podido retirar.';        
         }
-        else {
-            $_SESSION['respuesta'] = 'No se ha podido retirar.';        }
-    }else{
+    }
+    else{
         $_SESSION['respuesta'] = 'Saldo insuficiente.';        
     }
     header('Location: ../vista/cuentaahorros.php');

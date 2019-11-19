@@ -48,4 +48,14 @@
         echo "Error" . mysqli_error($con);
     }
 
+    $sql = "CREATE TABLE Movimientos (Id INT(11) NOT NULL AUTO_INCREMENT,Valor decimal(40,2) NOT NULL ,Origen INT(11), Destino INT(11),Tipo VARCHAR(30), PRIMARY KEY (Id));";
+    if (mysqli_query($con, $sql)) {
+        echo "Tabla Movimientos creada";
+    } else {
+        echo "Error" . mysqli_error($con);
+    }
+
+   
+
+
 ?>

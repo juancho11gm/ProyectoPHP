@@ -7,15 +7,15 @@
         $idtarjeta = $_POST['tarjetaid'];
         $valor = $_POST['valor'];
         $cuotas= $_POST['cuotas'];
+        $id = $_SESSION['Id'];
         
-        
-        $sql2 = "SELECT SUM(Compras.Valor) FROM Tarjetas INNER JOIN Compras ON Tarjetas.Id = Compras.TarjetaId INNER JOIN Clientes ON Tarjetas.ClienteId = Clientes.Id";
+        $sql2 = "SELECT SUM(Compras.Valor) FROM Tarjetas INNER JOIN Compras ON Tarjetas.Id = Compras.TarjetaId WHERE Tarjetas.ClienteId = '$id'";
         $consulta2 = mysqli_query($con,$sql2);
 
         $sql3 = "SELECT Tarjetas.CupoMaximo, Tarjetas.Sobrecupo FROM Tarjetas WHERE Tarjetas.Id = '$idtarjeta'";
         $consulta3 = mysqli_query($con,$sql3);
 
-        if( (mysqli_fetch_array( $consulta2)[0]+$valor) < (mysqli_fetch_array($consulta3)[0]+ mysqli_fetch_array($consulta3)[1])){
+        if( (mysqli_fetch_array( $consulta2)[0]+$valor) < (mysqli_fetch_array($consulta3)[0]+ mysqli_fetch_array($consulta3)[1])){ //Compras totales + compra actual < CupoMaximo + Sobrecupo
             $sql = "INSERT INTO Compras (Valor,Cuotas,TarjetaId)
             VALUES ('$valor','$cuotas','$idtarjeta')";
              $consulta = mysqli_query($con,$sql);

@@ -115,7 +115,7 @@
                     <td><?php echo $c[1];?></td>
                     <td><?php echo $c[2];?></td>
                     <td>
-                        <a href="" class="btn btn-outline-success">Editar</a>
+                        <a href="./actualizarCuentaahorros.php?Id=<?php echo $c[0]?>" class="btn btn-outline-success">Editar</a>
                         <a href="../controlador/eliminarCuenta.php?id=<?php echo $c[0]?>" class="btn btn-outline-danger">Eliminar</a>
                     </td>
                 </tr>

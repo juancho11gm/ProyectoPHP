@@ -58,6 +58,15 @@
                         <a class="p-2 text-dark " href="./creditos.php">Créditos</a>
                     </li>
                     <?php endif?>
+
+                    
+                <?php if($_SESSION['Rol']=='Usuario'):?>
+
+                        <li>
+                            <a class="p-2 text-dark" href="./mismovimientos.php">Mis movimientos</a>
+                        </li>
+
+                <?php endif?>
                     
                     <!--MENU ADMIN-->
                     <?php if($_SESSION['Rol']=='Administrador'):?>

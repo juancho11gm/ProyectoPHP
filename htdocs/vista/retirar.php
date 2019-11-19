@@ -41,7 +41,7 @@
 
     <div class="container text-center">
       <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Ingresar el saldo a retirar.</h1>
+        <h1 class="display-4">Ingresar el saldo a retirar en JaveCOins.</h1>
         </div>
       <form class="form" action="../controlador/retirar.php" method="post">
         <div >

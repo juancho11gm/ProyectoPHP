@@ -11,15 +11,19 @@
           $id = $_SESSION['Id'];
           $sql = "SELECT * FROM Tarjetas WHERE ClienteId ='$id'";
 
-          $sql2 = "SELECT Compras.Id, Compras.Valor, Compras.Cuotas, Tarjetas.Id FROM Tarjetas INNER JOIN Compras ON Tarjetas.Id = Compras.TarjetaId INNER JOIN Clientes ON Tarjetas.ClienteId = Clientes.Id";
-         
-          $arreglo = mysqli_query($con,$sql2);
-          while( $row = mysqli_fetch_array( $arreglo)){
-              $compras[]=$row; // Inside while loop
-          }
+          $sql2 = "SELECT Compras.Id, Compras.Valor, Compras.Cuotas, Tarjetas.Id FROM Tarjetas, Compras WHERE Tarjetas.Id = Compras.TarjetaId AND Tarjetas.ClienteId = '$id' ";
+          $query2 = mysqli_query($con,$sql2);
+          $compras = mysqli_fetch_all( $query2);
+
+          
+          
       }
       if($_SESSION['Rol']=="Administrador"){
           $sql = "SELECT * FROM Tarjetas";
+          $sql3 = "SELECT * FROM  Compras";
+
+          $query3 = mysqli_query($con,$sql3);
+          $comprastodas = mysqli_fetch_all( $query3);
       }
   }
 
@@ -27,6 +31,8 @@
   $tarjetas = mysqli_fetch_all($query);
 
  
+
+  
 
   $respuesta='';
   if(isset($_SESSION['respuesta'])) {
@@ -125,6 +131,9 @@
             </tr>
           </thead>
           <tbody>
+
+          <?php if($_SESSION['Rol']!='Administrador'):?>
+
           <?php foreach($compras as $c):?>
 
             <tr>
@@ -135,6 +144,25 @@
 
             </tr>
           <?php endforeach?>
+
+        <?php endif?>
+
+        <?php if($_SESSION['Rol']=='Administrador'):?>
+
+          <?php foreach($comprastodas as $c):?>
+
+            <tr>
+                    <td><?php echo $c[0]?></td>
+                    <td><?php echo $c[1]?></td>
+                    <td><?php echo $c[2]?></td>
+                    <td><?php echo $c[3]?></td>
+
+            </tr>
+          <?php endforeach?>
+
+          <?php endif?>
+
+
           </tbody>
         </table>
       </div>

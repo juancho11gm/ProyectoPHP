@@ -23,6 +23,9 @@
     if (mysqli_query($con, $sql)) {
         $_SESSION['respuesta'] = 'Se ha consignado exitosamente';
         echo 'Se ha consignado exitosamente';
+
+        $sql = "INSERT INTO Movimientos (Valor, Origen,Destino,Tipo ) VALUES ('$monto',0,'$destino','Sin cuenta consigna a cuenta');";
+        mysqli_query($con, $sql);
     }
     else {
         $_SESSION['respuesta'] = 'No se ha podido consignar.';
@@ -50,6 +53,8 @@
             if (mysqli_query($con, $sql)) {
                 $_SESSION['respuesta'] = 'Se ha consignado exitosamente';
 
+                $sql = "INSERT INTO Movimientos (Valor, Origen,Destino,Tipo ) VALUES ('$monto','$origen','$destino','Cuenta consigna a cuenta');";
+                mysqli_query($con, $sql);
             }
         }       
 
