@@ -46,6 +46,12 @@
                 <li>
                     <?php if($_SESSION['Rol']=='Administrador') echo '<a class="p-2 text-dark" href="./administrador.php">Administrador</a>';?>
                 </li>
+
+ 		<li>
+         
+                <a class="submit-btn btn btn-success" href="../controlador/findemes.php" role="button">Fin de Mes</a>
+
+            	</li>
             <?php endif?>
         <?php endif?>
         </ul>
