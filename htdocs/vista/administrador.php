@@ -23,6 +23,17 @@
     $query = mysqli_query($con,$sql);
     $datos = mysqli_fetch_array($query);
 
+    if($_POST){
+        if(isset($_POST['para'])){
+            include_once('../controlador/envioCorreo.php');
+            $para = $_POST['para'];
+            $tema = $_POST['tema'];
+            $contenido = $_POST['contenido'];
+            $redireccion = 'administrador.php';
+            envioCorreo($para,$tema,$contenido,$redireccion);
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -205,6 +216,33 @@
             </tbody>
         </table>
     </div>
+
+    <div class="container form-signin">
+        <form action="administrador.php" method="POST">
+            <h3>Envío de Correo</h3>
+            <br>
+            <div class="row">
+                <label for="" class="col-sm-2">Para:</label>
+                <div class="col">
+                    <input type="email" class="form-control" name="para" required>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <label for="" class="col-sm-2">Tema:</label>
+                <div class="col">
+                    <input type="text" class="form-control" name="tema" required>
+                </div>
+            </div>
+            <div>
+                <label for="">Contenido</label>
+                <textarea name="contenido" id="" class="form-control" cols="30" rows="10" required></textarea>
+            </div>
+            <br>
+            <button class="btn btn-success btn-block">Enviar</button>
+        </form>
+    </div>
+    <br>
     <?php else:?>
         <?php header('location:index.php');?>
     <?php endif?>
