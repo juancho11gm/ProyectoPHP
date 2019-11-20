@@ -64,6 +64,35 @@ foreach($creditos as $c){
 
 //pago de créditos invitados
 
+$sql = "SELECT * FROM Creditos WHERE Invitado IS NOT NULL;";
+$query = mysqli_query($con,$sql);
+$creditosinvitados = mysqli_fetch_all( $query);
+
+foreach($creditosinvitados as $c){
+    $date_now = date("Y-m-d");
+    if($c[6] >= $date_now ){
+
+        if($c[1]>0){
+
+            include_once('../controlador/envioCorreo.php');
+            $para = $c[7];
+            $tema = 'Crédito con el ID '.$c[0];
+            $contenido = 'No ha pagado su crédito, se le cobrarán intereses de mora.';
+            $redireccion = 'administrador.php';
+
+            $c[1] +=  ($c[1]*$c[2])/100;
+            $sql = "UPDATE  Creditos SET Monto='$c[1]' WHERE Id = '$c[0]'";
+            $query = mysqli_query($con,$sql);
+            envioCorreo($para,$tema,$contenido,$redireccion);
+
+
+        }
+    }
+
+}
+
+
+
 //pago de tarjeta
 
 
