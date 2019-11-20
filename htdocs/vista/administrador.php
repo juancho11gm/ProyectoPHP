@@ -123,7 +123,7 @@
                 <?php foreach($cuentas as $c):?>
                 <tr>
                     <td><?php echo $c[0];?></td>
-                    <td><?php echo $c[1];?></td>
+                    <td><?php echo number_format($c[1],0);?></td>
                     <td><?php echo $c[2];?></td>
                     <td>
                         <a href="./actualizarCuentaahorros.php?Id=<?php echo $c[0]?>" class="btn btn-outline-success">Editar</a>
@@ -156,11 +156,11 @@
                 <?php foreach($tarjetas as $t):?>
                 <tr>
                     <td><?php echo $t[0]?></td>
-                    <td><?php echo $t[1]?></td>
-                    <td><?php echo $t[2]?></td>
-                    <td><?php echo $t[3]?></td>
-                    <td><?php echo $t[4]?></td>
-                    <td><?php echo $t[5]?></td>
+                    <td><?php echo number_format($t[1],2)?></td>
+                    <td><?php echo number_format($t[2],2)?></td>
+                    <td><?php echo number_format($t[3],2)?></td>
+                    <td><?php echo number_format($t[4],2)?></td>
+                    <td><?php echo number_format($t[5],2)?></td>
                     <td><?php echo $t[6]?></td>
                     <td>
                         <?php if($t[6] == 'N'):?>
@@ -197,9 +197,9 @@
                 <?php foreach($creditos as $c):?>
                 <tr>
                     <td><?php echo $c[0]?></td>
-                    <td><?php echo $c[1]?></td>
-                    <td><?php echo $c[2]?></td>
-                    <td><?php echo $c[3]?></td>
+                    <td><?php echo number_format($c[1],2)?></td>
+                    <td><?php echo number_format($c[2],2)?></td>
+                    <td><?php echo number_format($c[3],2)?></td>
                     <td><?php echo $c[4]?></td>
                     <td><?php echo $c[5]?></td>
                     <td><?php echo $c[7]?></td>

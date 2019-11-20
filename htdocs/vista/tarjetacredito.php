@@ -79,10 +79,10 @@
           <?php foreach($tarjetas as $t):?>
                 <tr>
                     <td><?php echo number_format($t[0],0)?></td>
-                    <td><?php echo number_format($t[1],2)?></td>
                     <td><?php echo number_format($t[2],2)?></td>
                     <td><?php echo number_format($t[3],2)?></td>
                     <td><?php echo number_format($t[4],2)?></td>
+                    <td><?php echo number_format($t[5],2)?></td>
                     <td><?php echo $t[6]?></td>
                     <td>
 

@@ -70,9 +70,9 @@
                 <?php foreach($creditos as $c):?>
                 <tr>
                     <td><?php echo $c[0]?></td>
-                    <td><?php echo $c[1]?></td>
-                    <td><?php echo $c[2]?></td>
-                    <td><?php echo $c[3]?></td>
+                    <td><?php echo number_format($c[1],2)?></td>
+                    <td><?php echo number_format($c[2],2)?></td>
+                    <td><?php echo number_format($c[3],2)?></td>
                     <td><?php echo $c[4]?></td>
                     <?php if($_SESSION['Rol']=='Administrador'):?>
                     <td><?php echo $c[5]?></td>

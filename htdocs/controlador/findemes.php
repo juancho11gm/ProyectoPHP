@@ -51,7 +51,6 @@ foreach($creditos as $c){
                     $sql = "INSERT INTO Movimientos (Valor, Origen,Destino,Tipo ) VALUES ('$cuentaactual[1]',0,'$cuentaactual[0]','Pago del crédito $c[0]');";
                     $query = mysqli_query($con,$sql);
                 }
-               
 
                 $cuentaactual[1]=0;
 
@@ -114,7 +113,6 @@ foreach($tarjetas as $t){
                     $sql = "INSERT INTO Movimientos (Valor, Origen,Destino,Tipo ) VALUES ('$cuentaactual[1]',0,'$cuentaactual[0]','Pago de la cuota de manejo t $t[0]');";
                     $query = mysqli_query($con,$sql);
                 }
-               
                 $cuentaactual[1]=0;
 
             }

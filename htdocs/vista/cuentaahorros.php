@@ -85,7 +85,7 @@
               <?php foreach($_SESSION['TodasCuentasAhorros'] as $c):?>
                 <tr>
                     <td><?php echo $c[0];?></td>
-                    <td><?php echo $c[1];?></td>
+                    <td><?php echo number_format($c[1],2);?></td>
                     <td><?php echo $c[2];?></td>
                     <td>
                         <a href="./actualizarCuentaahorros.php?Id=<?php echo $c[0]?>" class="btn btn-outline-success">Editar</a>
