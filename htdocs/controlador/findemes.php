@@ -148,7 +148,7 @@ foreach($cuentas as $c){
 
 $_SESSION['respuesta'] = 'Se simuló el fin de mes';
 
-//header('Location: ../vista/index.php');
+header('Location: ../vista/index.php');
 
 
 function getSaldoTotal($idcliente){
