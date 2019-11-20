@@ -120,7 +120,7 @@
               <option>Sin cuenta</option>
             </select>
             <label for="amount">Monto a Consignar</label>
-            <input type="number" name="monto" id="amount" placeholder="Monto" class="form-control" required>
+            <input type="number" name="monto" id="amount" min=0 onkeyup="replaceSpecialCharactersNumber(this)" placeholder="Monto" class="form-control" required>
             <div class="row">
               <div class="col-6">
                 <div class="form-check text-center">
@@ -164,7 +164,7 @@
               ?>
             </select>
             <label for="amount">Monto a Consignar</label>
-            <input type="number" name="montocredito" id="amount" placeholder="Monto" class="form-control" required>
+            <input type="number" name="montocredito" id="amount" min=0 onkeyup="replaceSpecialCharactersNumber(this)" placeholder="Monto" class="form-control" required>
             <div class="row">
               <div class="col-6">
                 <div class="form-check text-center">
@@ -199,6 +199,11 @@
     <?php endif?>
 
 
-
+    <script>
+      function replaceSpecialCharactersNumber(e){
+        e.value = e.value.split(/[`~!@#$%^&*()_|+\-¿¡=?°¬;:'e",.<>\{\}\[\]\\\/]/gi).join(""); 
+        e.value = e.value.split(" ").join("");
+      }
+    </script>
   </body>
 </html>

@@ -28,6 +28,9 @@
 </head>
 <body>
     <?php include('header.php')?>
+    <?php if(!isset($_SESSION['Rol'])):?>
+    <?php header('location:index.php');?>
+    <?php endif?>
     <h2 class="title">Centro de Mensajes</h2>
     <div class="container form-signin mensajes">
         <?php foreach($chats as $c):?>

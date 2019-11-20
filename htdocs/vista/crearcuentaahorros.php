@@ -30,7 +30,7 @@
           <div class="row">
             <div class="col-6">
               <label for="inputPassword2" class="sr-only">Saldo</label>
-              <input type="number" name="saldo" class="form-control"  placeholder="Saldo" required>
+              <input type="number" min=0 name="saldo" class="form-control" onkeyup="replaceSpecialCharactersNumber(this)" placeholder="Saldo" required>
             </div>
             <button type="submit" class="submit-btn btn btn-success">Agregar</button>
           </div>
@@ -38,5 +38,12 @@
       
       </div>
     </div>
+
+    <script>
+      function replaceSpecialCharactersNumber(e){
+        e.value = e.value.split(/[`~!@#$%^&*()_|+\-¿¡=?°¬;:'e",.<>\{\}\[\]\\\/]/gi).join(""); 
+        e.value = e.value.split(" ").join("");
+      }
+    </script>
   </body>
 </html>

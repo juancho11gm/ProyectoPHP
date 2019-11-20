@@ -58,7 +58,7 @@
   
   <body>
     <?php include('header.php')?>
-
+  
 
     <h1 class="title">Tarjetas de Crédito</h1>
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
@@ -83,7 +83,7 @@
                     <td><?php echo number_format($t[2],2)?></td>
                     <td><?php echo number_format($t[3],2)?></td>
                     <td><?php echo number_format($t[4],2)?></td>
-                    <td><?php echo $t[5]?></td>
+                    <td><?php echo $t[6]?></td>
                     <td>
 
                     <?php if($_SESSION['Rol']=='Administrador'):?>
