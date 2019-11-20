@@ -55,7 +55,19 @@
         echo "Error" . mysqli_error($con);
     }
 
-   
+    $sql = "CREATE TABLE Chat (Id INT(11) NOT NULL AUTO_INCREMENT, Usuario1 VARCHAR(30), Usuario2 VARCHAR(30), PRIMARY KEY (Id));";
+    if (mysqli_query($con, $sql)) {
+        echo "Tabla Chat creada";
+    } else {
+        echo "Error" . mysqli_error($con);
+    }
+
+    $sql = "CREATE TABLE Mensaje (Id INT(11) NOT NULL AUTO_INCREMENT,IdChat INT(11) NOT NULL, Usuario VARCHAR(30) ,Texto VARCHAR(30), Hora VARCHAR(30), PRIMARY KEY (Id));";
+    if (mysqli_query($con, $sql)) {
+        echo "Tabla Mensajes creada";
+    } else {
+        echo "Error" . mysqli_error($con);
+    }
 
 
 ?>

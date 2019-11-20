@@ -9,26 +9,26 @@
         <?php if(isset($_SESSION['Rol'])):?>
             <!--MENU CLIENTE-->
             <?php if($_SESSION['Rol']!='Invitado'):?>
-            <li class="nav-item">
-                <a class="p-2 text-dark" href="./cuentaahorros.php">Cuenta de ahorros</a>
-            </li>
-            <li class="nav-item">
-                <a class="p-2 text-dark" href="./tarjetacredito.php">Tarjetas de crédito</a>
-            </li >
-            <li>
-                <a class="p-2 text-dark" href="./creditos.php">Créditos</a>
-            </li>
-            <li>
-                <a class="p-2 text-dark" href="./mensajes.php">Mensajes</a>
-            </li>
+                <li class="nav-item">
+                    <a class="p-2 text-dark" href="./cuentaahorros.php">Cuenta de ahorros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="p-2 text-dark" href="./tarjetacredito.php">Tarjetas de crédito</a>
+                </li >
+                <li>
+                    <a class="p-2 text-dark" href="./creditos.php">Créditos</a>
+                </li>
 
-            <?php if($_SESSION['Rol']=='Usuario'):?>
+                <?php if($_SESSION['Rol']=='Usuario'):?>
+                    <li>
+                        <a class="p-2 text-dark" href="./mensajes.php?id=<?php echo $_SESSION['Id']?>">Mensajes</a>
+                    </li>
 
-            <li>
-                <a class="p-2 text-dark" href="./mismovimientos.php">Mis movimientos</a>
-            </li>
+                    <li>
+                        <a class="p-2 text-dark" href="./mismovimientos.php">Mis movimientos</a>
+                    </li>
 
-            <?php endif?>
+                <?php endif?>
 
             <!--MENU INVITADO-->
             <?php else:?>
@@ -39,9 +39,12 @@
             
             <!--MENU ADMIN-->
             <?php if($_SESSION['Rol']=='Administrador'):?>
-            <li>
-                <?php if($_SESSION['Rol']=='Administrador') echo '<a class="p-2 text-dark" href="./administrador.php">Administrador</a>';?>
-            </li>
+                <li>
+                    <a class="p-2 text-dark" href="./centroMensajes.php">Mensajes</a>
+                </li>
+                <li>
+                    <?php if($_SESSION['Rol']=='Administrador') echo '<a class="p-2 text-dark" href="./administrador.php">Administrador</a>';?>
+                </li>
             <?php endif?>
         <?php endif?>
         </ul>

@@ -106,7 +106,7 @@
     </div>
     <br>
     <?php if($_SESSION['Rol'] != 'Administrador'):?>
-    <div class="consignar ">
+    <div class="consignar " style="display:flex; justify-content:space-around">
         <div class="row form-signin">
           <h3 clas="title">Consignar a cuenta </h3>
           <form class="container " action="../controlador/consignar.php" method="post">
@@ -148,7 +148,7 @@
                 }
               ?>
             </select><br>
-              <button type="submit" class="submit-btn btn btn-info">Consignar</button>
+              <button type="submit" class="submit-btn btn btn-outline-success btn-block">Consignar</button>
           </form>
         </div>
 
@@ -192,7 +192,7 @@
                 }
               ?>
             </select><br>
-              <button type="submit" class="submit-btn btn btn-info">Consignar</button>
+              <button type="submit" class="submit-btn btn btn-outline-success btn-block">Consignar</button>
           </form>
         </div>
     </div>

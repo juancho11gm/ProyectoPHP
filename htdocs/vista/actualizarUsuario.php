@@ -39,7 +39,16 @@
                     <input type="text" class="form-control" name="usuario" value="<?php echo $datos['Usuario']?>">
                 </div>
             </div>
-           
+            <div class="row">
+                <div class="col">
+                    <label for="">Rol</label>
+                    <select name="rol" class="form-control" name="rol">
+                        <option value=""></option>
+                        <option value="Administrador" <?php if($datos['Rol']=='Administrador') echo 'selected'?>>Administrador</option>
+                        <option value="Usuario" <?php if($datos['Rol']=='Usuario') echo 'selected'?>>Usuario</option>
+                    </select>
+                </div>
+            </div>
             <input type="hidden" name="id" value="<?php echo $datos['Id']?>">
             <br>
             <div class="row">
