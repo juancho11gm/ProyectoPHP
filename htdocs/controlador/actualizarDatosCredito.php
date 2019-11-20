@@ -7,6 +7,11 @@
         $tasa = $_POST['interes'];
         $cuotas = $_POST['cuotas'];
         $id = $_POST['id'];
+
+        $_SESSION['interes_global']=$tasa;
+        $_SESSION['cuota_global']=$cuotas;
+
+
         $sql = "UPDATE DatosBasicos SET TasaInteres = '$tasa', CuotaManejo = '$cuotas' WHERE Id = '$id';";
         
         if(!mysqli_query($con,$sql)){

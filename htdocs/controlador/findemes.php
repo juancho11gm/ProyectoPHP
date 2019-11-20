@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include_once('../config/config.php');
 $con = mysqli_connect(HOST_DB,USUARIO_DB,USUARIO_PASS,NOMBRE_DB);
 
@@ -61,6 +61,13 @@ foreach($creditos as $c){
 
 }
 
+
+//pago de créditos invitados
+
+//pago de tarjeta
+
+
+
 //cobrar cuotas de manejo
 
 $sql = "SELECT * FROM Tarjetas;";
@@ -117,8 +124,31 @@ foreach($tarjetas as $t){
     $query = mysqli_query($con,$sql);  
 }
 
+//Pago de intereses
 
-header('Location: ../vista/index.php');
+$sql = "SELECT * FROM CuentasAhorros;";
+$query = mysqli_query($con,$sql);
+$cuentas = mysqli_fetch_all( $query);
+
+foreach($cuentas as $c){
+    $x=0;
+    if( ($c[1] * $_SESSION['interes_global'] /100) >0){
+        $x = ($c[1] * $_SESSION['interes_global']) /100;
+        $sql = "INSERT INTO Movimientos (Valor, Origen,Destino,Tipo ) VALUES ('$x',0,'$c[0]','Pago de intereses');";
+        $query = mysqli_query($con,$sql);
+    }
+    
+
+    $c[1] += $x;
+    $sql = "UPDATE  CuentasAhorros SET Saldo='$c[1]' WHERE Id = '$c[0]'";
+    $query = mysqli_query($con,$sql);
+
+}
+
+
+$_SESSION['respuesta'] = 'Se simuló el fin de mes';
+
+//header('Location: ../vista/index.php');
 
 
 function getSaldoTotal($idcliente){
