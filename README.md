@@ -1,2 +1,3 @@
-# ProyectoPHP
-El proyecto para este módulo es la creación de un portal bancario en el cual todos los clientes manejan una moneda virtual llamada JaveCoin. 
+# PHP Project
+
+The project for this module is the creation of a banking portal in which all clients manage a virtual currency called JaveCoin.
