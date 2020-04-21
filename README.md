@@ -14,4 +14,4 @@ The project for this module is the creation of a banking portal in which all cli
 
 8. You can create savings accounts, credit cards, make movements from one account to another and so on.
 
-![image](https://user-images.githubusercontent.com/36536646/79903629-026c1100-83d9-11ea-8521-c74a3f3dbea7.png)
+![image](https://user-images.githubusercontent.com/36536646/79904149-dac97880-83d9-11ea-991f-d36fe71ff194.png)
